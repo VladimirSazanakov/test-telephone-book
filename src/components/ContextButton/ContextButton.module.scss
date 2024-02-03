@@ -1,0 +1,173 @@
+$hover_color: #273B69;
+$fill_color: #fefefe;
+.fog{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  z-index: 15;
+}
+.wrapper{
+  position: fixed;
+  top:50%;
+  left:50%;
+  height: 436px;
+  width:436px;
+  margin-left: -218px;
+  margin-top: -218px;
+  border-radius: 50%;
+  // outline: red solid 1px;
+}
+
+.imageUp{
+  position: relative;
+  fill: #fefefe;
+  :hover{
+    fill: $hover_color;
+  // ~.ico_add{
+  //   fill:$fill_color;
+  // }  
+  }
+}
+.imageUp:hover~.ico_add{
+  fill:$fill_color;
+}
+
+// .ico_add:hover{
+//   fill: $fill_color;
+// }
+.ico_add{
+  position: absolute;
+  z-index: 16;
+  top: 30px;
+  left: 190px;
+  fill: $hover_color;
+  // stroke: $hover_color;
+}
+
+.text_add{
+  display: flex;
+  position: absolute;
+  width: 100px;
+  top:80px;
+  left: 160px;
+  color:$hover_color;
+  z-index: 16;
+  font-weight: 600;
+}
+
+.imageUp:hover~.text_add{
+  color:$fill_color;
+}
+
+.imageRight{
+  position: relative;
+  transform: rotate(90deg);
+  // transform-origin: 50% 75%;
+  top: -47px;
+  left: 127px;
+  fill: #fefefe;
+  :hover{
+    fill: $hover_color;
+  }
+}
+
+.ico_export{
+  position: absolute;
+  top: 140px;
+  left: 325px;
+  z-index: 16;
+  fill:$hover_color
+}
+.imageRight:hover~.ico_export{
+  fill:$fill_color;
+}
+
+.text_export{
+  display: flex;
+  position: absolute;
+  width: 100px;
+  top:200px;
+  right: 50px;
+  color:$hover_color;
+  z-index: 16;
+  font-weight: 600;
+}
+
+.imageRight:hover~.text_export{
+  color:$fill_color;
+}
+
+.imageDown{
+  position: relative;
+  transform: rotate(180deg);
+  top:-97px;
+  left: -2px;
+  :hover{
+    fill:$hover_color;
+  }
+}
+
+.ico_edit{
+  position: absolute;
+  top: 300px;
+  left: 190px;
+  z-index: 16;
+  fill:$hover_color
+}
+.imageDown:hover~.ico_edit{
+  fill:$fill_color;
+}
+
+.text_edit{
+  display: flex;
+  position: absolute;
+  width: 100px;
+  top:350px;
+  right: 180px;
+  color:$hover_color;
+  z-index: 16;
+  font-weight: 600;
+}
+
+.imageDown:hover~.text_edit{
+  color:$fill_color;
+}
+
+.imageLeft{
+  position: absolute;
+  transform: rotate(-90deg);
+  top:128px;
+  left:-72px;
+  :hover{
+    fill:$hover_color;
+    ~.ico_import{
+      fill:$fill_color;
+    }
+  }
+}
+.ico_import{
+  position: absolute;
+  top: 140px;
+  left: 55px;
+  z-index: 16;
+  fill:$hover_color
+}
+.imageLeft:hover~.ico_import{
+  fill:$fill_color;
+}
+
+.text_import{
+  display: flex;
+  position: absolute;
+  width: 100px;
+  top:200px;
+  left: 20px;
+  color:$hover_color;
+  z-index: 16;
+  font-weight: 600;
+}
+
+.imageLeft:hover~.text_import{
+  color:$fill_color;
+}

@@ -1,0 +1,12 @@
+.contact_list {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: absolute;
+  top: 112px;
+  overflow-y:scroll;
+  width: 100%;
+  padding: 24px;
+  background-color: #EEf0f4;
+}
+
