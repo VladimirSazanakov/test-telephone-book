@@ -1,28 +1,35 @@
 import React from "react";
-import style from './Contact.module.scss';
+import style from "./Contact.module.scss";
+import { TContact } from "../store/reducers/phoneBook";
 
-const Contact = () =>{
-  let styleAll = [style.contact]
-  return(
-    <div className={styleAll.join(' ')}>
-      <div className={style.avatar}>
-      
-      </div>
-      <div className={style.name}>
-        Александра Кукушкина
-      </div>
-      <div className={style.number}>
-        +7909883423
-      </div>
-      <div className={style.adress}>
-        Санкт-Петербург ул. Салова д. 4 кв 23
-      </div>
-      <div className={style.email}>
-        12342@mail.com
-      </div>
-      <button className={style.edit_button}>Редактировать</button>
+type TProps = {
+  active?: boolean;
+  onClickEdit?: Function;
+  contact: TContact;
+};
+
+const Contact = ({
+  active = false,
+  onClickEdit = () => {},
+  contact,
+}: TProps) => {
+  const { id, name, email, number, address } = contact;
+  let styleAll = [style.contact];
+  if (active) styleAll.push(style.active);
+  return (
+    <div className={styleAll.join(" ")}>
+      <div className={style.avatar}></div>
+      <div className={style.name}>{name}</div>
+      <div className={style.number}>{number}</div>
+      <div className={style.adress}>{address}</div>
+      <div className={style.email}>{email}</div>
+      {active ? (
+        <button className={style.edit_button} onClick={() => onClickEdit(id)}>
+          Редактировать
+        </button>
+      ) : null}
     </div>
-  )
-}
+  );
+};
 
 export default Contact;
