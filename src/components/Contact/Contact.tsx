@@ -1,6 +1,8 @@
 import React from "react";
 import style from "./Contact.module.scss";
 import { TContact } from "../store/reducers/phoneBook";
+import { useAppDispatch } from "../store/hooks";
+import { setMode } from "../store/reducers/app";
 
 type TProps = {
   active?: boolean;

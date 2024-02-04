@@ -2,23 +2,28 @@ import React, { useState } from "react";
 import style from "./ContactList.module.scss";
 import Contact from "../Contact/Contact";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { setActiveContact } from "../store/reducers/phoneBook";
+import { setMode } from "../store/reducers/app";
 
 const ContactList = (props: any) => {
-  const [activeElement, setActiveElement] = useState(0);
+  // const [activeElement, setActiveElement] = useState(0);
+
+  const activeElement = useAppSelector(
+    (state) => state.phoneBook.activeContact
+  );
   const filter = useAppSelector((state) => state.filter.value);
   const contacts = useAppSelector((state) => state.phoneBook.ContactList);
+  const dispatch = useAppDispatch();
 
   console.log(contacts);
 
   const handleClick = (key: number) => {
-    setActiveElement(key);
+    // setActiveElement(key);
+    dispatch(setActiveContact(key));
   };
 
-  const handleContext = () => {
-    props.onContext();
-    document.oncontextmenu = () => {
-      return false;
-    };
+  const onClickEdit = () => {
+    dispatch(setMode("edit"));
   };
 
   const list = contacts
@@ -28,8 +33,8 @@ const ContactList = (props: any) => {
     .map((contact) => {
       return (
         <li key={contact.id} onClick={() => handleClick(contact.id)}>
-          {activeElement == contact.id ? (
-            <Contact active contact={contact} />
+          {activeElement === contact.id ? (
+            <Contact active contact={contact} onClickEdit={onClickEdit} />
           ) : (
             <Contact contact={contact} />
           )}
@@ -38,7 +43,7 @@ const ContactList = (props: any) => {
     });
 
   return (
-    <div className={style.contact_list} onContextMenu={handleContext}>
+    <div className={style.contact_list}>
       <ul>{list}</ul>
     </div>
   );

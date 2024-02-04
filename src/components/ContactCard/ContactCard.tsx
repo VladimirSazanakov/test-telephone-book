@@ -1,35 +1,70 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./ContactCard.module.scss";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { setNewContact } from "../store/reducers/phoneBook";
+import { setNewContact, updateContact } from "../store/reducers/phoneBook";
 import type { TContact } from "../store/reducers/phoneBook";
+import { setMode } from "../store/reducers/app";
 
 const ContactCard = () => {
-  const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [address, setAddress] = useState("");
+  const mode = useAppSelector((state) => state.mode.mode);
+  const active = useAppSelector((state) => state.phoneBook.activeContact);
+  const List = useAppSelector((state) => state.phoneBook.ContactList);
+
+  let formName = "Добавить пользователя";
+
+  const NewContact = {
+    id: active,
+    name: "",
+    number: "",
+    email: "",
+    address: "",
+  };
+
+  if (mode === "edit") {
+    const editedContact =
+      List[List.findIndex((contact) => contact.id === active)];
+    NewContact.name = editedContact.name;
+    NewContact.number = editedContact.number ? editedContact.number : "";
+    NewContact.email = editedContact.email ? editedContact.email : "";
+    NewContact.address = editedContact.address ? editedContact.address : "";
+    formName = "Редактировать пользователя";
+  }
+
+  const [name, setName] = useState(NewContact.name);
+  const [number, setNumber] = useState(NewContact.number);
+  const [email, setEmail] = useState(NewContact.email);
+  const [address, setAddress] = useState(NewContact.address);
 
   const dispatch = useAppDispatch();
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
+    console.log(event);
+
     const newContact: TContact = {
-      id: 123,
+      id: active ? active : 1,
       name: name,
       number: number,
       email: email,
       address: address,
     };
-    dispatch(setNewContact(newContact));
+    if (mode === "new") {
+      dispatch(setNewContact(newContact));
+    } else if (mode === "edit") {
+      dispatch(updateContact(newContact));
+    }
+  };
+
+  const handleExit = () => {
+    dispatch(setMode("view"));
   };
 
   return (
     <div className={style.fog}>
       <div className={style.contact_card}>
-        <span className={style.title}>Добавить пользователя</span>
+        <span className={style.title}>{formName}</span>
         <div className={style.icon}></div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} onReset={handleExit}>
           <input
             className={style.name}
             type="text"

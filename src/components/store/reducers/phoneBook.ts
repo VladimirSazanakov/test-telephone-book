@@ -13,12 +13,13 @@ export type TContact = {
 }
 
 type TState = {
-  ContactList: Array<TContact>
+  ContactList: Array<TContact>,
+  activeContact: number|null;
 }
 
 const initialState: TState = {
   ContactList: [],
-
+  activeContact: null,
 }
 
 export const contacts = createSlice({
@@ -43,10 +44,13 @@ export const contacts = createSlice({
     updateContact(state, action){
       const removeIndex = state.ContactList.findIndex(contact=>contact.id===action.payload.id)
       state.ContactList.splice(removeIndex, 1, action.payload);
+    },
+    setActiveContact(state, action){
+      state.activeContact = action.payload;
     }
   }
 })
 
-export const {setNewContact, removeContact, updateContact} = contacts.actions;
+export const {setNewContact, removeContact, updateContact, setActiveContact} = contacts.actions;
 
 export default contacts.reducer;
