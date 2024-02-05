@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { setNewContact, updateContact } from "../store/reducers/phoneBook";
 import type { TContact } from "../store/reducers/phoneBook";
 import { setMode } from "../store/reducers/app";
+// import { ReactComponent as IcoUser } from "../../assets/img/defaultUser.svg";
 
 const ContactCard = () => {
   const mode = useAppSelector((state) => state.mode.mode);
@@ -53,6 +54,7 @@ const ContactCard = () => {
     } else if (mode === "edit") {
       dispatch(updateContact(newContact));
     }
+    dispatch(setMode("view"));
   };
 
   const handleExit = () => {
@@ -64,7 +66,11 @@ const ContactCard = () => {
       <div className={style.contact_card}>
         <span className={style.title}>{formName}</span>
         <div className={style.icon}></div>
-        <form onSubmit={handleSubmit} onReset={handleExit}>
+        <form
+          className={style.form}
+          onSubmit={handleSubmit}
+          onReset={handleExit}
+        >
           <input
             className={style.name}
             type="text"

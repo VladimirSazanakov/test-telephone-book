@@ -6,7 +6,14 @@
   top: 112px;
   overflow-y:scroll;
   width: 100%;
+  min-height: 600px;
   padding: 24px;
   background-color: #EEf0f4;
+}
+
+.list_container{
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 

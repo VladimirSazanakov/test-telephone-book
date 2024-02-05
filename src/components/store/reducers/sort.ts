@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  value: ''
+  value: 'name'
 }
 
 export const sort = createSlice({

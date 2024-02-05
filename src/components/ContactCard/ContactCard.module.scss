@@ -22,7 +22,14 @@ background: rgba(0,0,0,0.5);
   margin-top: -218px;
   margin-left: -218px;
   padding: 30px;
-  outline: #273b69 solid 3px;
+  // outline: #273b69 solid 3px;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .title{
@@ -38,6 +45,7 @@ background: rgba(0,0,0,0.5);
   background-color: brown;
   border-radius: 50%;
   margin-bottom: 20px;
+  background: url('../../assets/img/defaultUser.svg') center no-repeat;
 }
 
 .name{
@@ -88,5 +96,12 @@ input{
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
+  transition: all 0.5s;
+}
+
+.button:hover{
+  background-color: #b2ddc1;
+  transition: all 0.5s;
+  box-shadow: 0 0 6px grey;
 }
 

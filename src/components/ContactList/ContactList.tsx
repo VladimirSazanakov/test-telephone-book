@@ -13,9 +13,20 @@ const ContactList = (props: any) => {
   );
   const filter = useAppSelector((state) => state.filter.value);
   const contacts = useAppSelector((state) => state.phoneBook.ContactList);
+  const sortValue = useAppSelector((state) => state.sort.value);
   const dispatch = useAppDispatch();
 
-  console.log(contacts);
+  // console.log(contacts);
+
+  const sortFunc = (elA: any, elB: any) => {
+    if (elA[sortValue] < elB[sortValue]) {
+      return -1;
+    } else if (elA[sortValue] > elB[sortValue]) {
+      return 1;
+    } else {
+      return 0;
+    }
+  };
 
   const handleClick = (key: number) => {
     // setActiveElement(key);
@@ -28,8 +39,12 @@ const ContactList = (props: any) => {
 
   const list = contacts
     .filter((contact) => {
-      return Object.values(contact).join(" ").includes(filter);
+      return Object.values(contact)
+        .join(" ")
+        .toLowerCase()
+        .includes(filter.toLowerCase());
     })
+    .sort((first, seccond) => sortFunc(first, seccond))
     .map((contact) => {
       return (
         <li key={contact.id} onClick={() => handleClick(contact.id)}>
@@ -44,7 +59,7 @@ const ContactList = (props: any) => {
 
   return (
     <div className={style.contact_list}>
-      <ul>{list}</ul>
+      <ul className={style.list_container}>{list}</ul>
     </div>
   );
 };

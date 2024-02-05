@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import Header from "../Header";
-import Contact from "../Contact";
+// import Contact from "../Contact";
 import ContactList from "../ContactList";
 import ContactCard from "../ContactCard";
 import ContextButton from "../ContextButton";
@@ -15,7 +15,7 @@ function App() {
   // const [mode, setMode] = useState<TMode>("edit");
 
   const mode = useAppSelector((state) => state.mode.mode);
-  console.log(mode);
+  // console.log(mode);
   const dispatch = useAppDispatch();
 
   const handleContext = () => {

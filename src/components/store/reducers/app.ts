@@ -9,8 +9,8 @@ export const appState = createSlice({
   initialState,
   reducers: {
     setMode(state, action){
-      console.log(action.payload);
-      console.log(state);
+      // console.log(action.payload);
+      // console.log(state);
       state.mode = action.payload;
     }
   }
