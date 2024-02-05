@@ -33,10 +33,11 @@ background: rgba(0,0,0,0.5);
 }
 
 .title{
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 24px;
+  color: #273b69;
 }
 
 .icon{
@@ -97,6 +98,7 @@ input{
   font-weight: 600;
   text-transform: uppercase;
   transition: all 0.5s;
+  color: #273b69;
 }
 
 .button:hover{
