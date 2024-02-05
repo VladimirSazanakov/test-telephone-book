@@ -21,7 +21,7 @@ const ContactCard = () => {
     address: "",
   };
 
-  if (mode === "edit") {
+  if (mode === "edit" || mode === "view_contact") {
     const editedContact =
       List[List.findIndex((contact) => contact.id === active)];
     NewContact.name = editedContact.name;
@@ -29,6 +29,9 @@ const ContactCard = () => {
     NewContact.email = editedContact.email ? editedContact.email : "";
     NewContact.address = editedContact.address ? editedContact.address : "";
     formName = "Редактировать пользователя";
+    if (mode === "view_contact") {
+      formName = "Просмотр пользователя";
+    }
   }
 
   const [name, setName] = useState(NewContact.name);
@@ -105,9 +108,11 @@ const ContactCard = () => {
             onChange={(event) => setAddress(event.target.value)}
           />
           <div className={style.button_wrapper}>
-            <button className={style.button} type="submit">
-              Сохранить
-            </button>
+            {mode === "view_contact" ? null : (
+              <button className={style.button} type="submit">
+                Сохранить
+              </button>
+            )}
             <button className={style.button} type="reset">
               Отмена
             </button>

@@ -31,6 +31,7 @@ function App() {
       <ContactList />
       {mode === "new" ? <ContactCard /> : null}
       {mode === "edit" ? <ContactCard /> : null}
+      {mode === "view_contact" ? <ContactCard /> : null}
       {mode === "context" ? <ContextButton /> : null}
     </div>
   );

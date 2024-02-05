@@ -14,6 +14,7 @@ const ContactList = (props: any) => {
   const filter = useAppSelector((state) => state.filter.value);
   const contacts = useAppSelector((state) => state.phoneBook.ContactList);
   const sortValue = useAppSelector((state) => state.sort.value);
+  const isEditMode = useAppSelector((state) => state.mode.editMode);
   const dispatch = useAppDispatch();
 
   // console.log(contacts);
@@ -31,6 +32,9 @@ const ContactList = (props: any) => {
   const handleClick = (key: number) => {
     // setActiveElement(key);
     dispatch(setActiveContact(key));
+    if (!isEditMode) {
+      dispatch(setMode("view_contact"));
+    }
   };
 
   const onClickEdit = () => {

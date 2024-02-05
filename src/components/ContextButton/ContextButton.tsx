@@ -5,11 +5,12 @@ import { ReactComponent as IcoAdd } from "../../assets/img/ADD.svg";
 import { ReactComponent as IcoImport } from "../../assets/img/Import.svg";
 import { ReactComponent as IcoExport } from "../../assets/img/export.svg";
 import { ReactComponent as IcoEdit } from "../../assets/img/edit.svg";
-import { setMode } from "../store/reducers/app";
-import { useAppDispatch } from "../store/hooks";
+import { setMode, setEditMode } from "../store/reducers/app";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
 
 const ContextButton = () => {
   const dispatch = useAppDispatch();
+  const isEditMode = useAppSelector((state) => state.mode.editMode);
 
   const onClickAround = () => {
     dispatch(setMode("view"));
@@ -35,8 +36,10 @@ const ContextButton = () => {
   };
 
   const onClickEditList = () => {
-    console.log("click Edit List");
-    window.alert("Sory... This function is not relase eat");
+    const toogleMode = !isEditMode;
+    dispatch(setEditMode(toogleMode));
+    // console.log("click Edit List");
+    // window.alert("Sory... This function is not relase eat");
   };
 
   return (
@@ -50,7 +53,9 @@ const ContextButton = () => {
         <div className={style.text_export}>Экспортировать контакты</div>
         <ImageSVG className={style.imageDown} onClick={onClickEditList} />
         <IcoEdit className={style.ico_edit} />
-        <div className={style.text_edit}>Редактировать список</div>
+        <div className={style.text_edit}>
+          {isEditMode ? "Отключить редактирование" : "Редактировать список"}
+        </div>
         <ImageSVG className={style.imageLeft} onClick={onClickImport} />
         <IcoImport className={style.ico_import} />
         <div className={style.text_import}>Импортировать контакты</div>
