@@ -7,39 +7,36 @@ import { ReactComponent as IcoExport } from "../../assets/img/export.svg";
 import { ReactComponent as IcoEdit } from "../../assets/img/edit.svg";
 import { setMode, setEditMode } from "../store/reducers/app";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { appMode } from "../../types_test/types";
 
 const ContextButton = () => {
   const dispatch = useAppDispatch();
   const isEditMode = useAppSelector((state) => state.mode.editMode);
 
   const onClickAround = () => {
-    dispatch(setMode("view"));
+    dispatch(setMode(appMode.view));
   };
 
   const onClickNew = (event: any) => {
-    dispatch(setMode("new"));
+    dispatch(setMode(appMode.new));
     event.stopPropagation();
   };
 
   const onClickExport = (event: any) => {
     console.log("clicExport");
-    window.alert("Sory... This function is not relase eat");
-    // dispatch(setMode("new"));
+    window.alert("Sory..., but this feature is under development.");
     event.stopPropagation();
   };
 
   const onClickImport = (event: any) => {
     console.log("clickImport");
-    window.alert("Sory... This function is not relase eat");
-    // dispatch(setMode("new"));
+    window.alert("Sory..., but this feature is under development.");
     event.stopPropagation();
   };
 
   const onClickEditList = () => {
     const toogleMode = !isEditMode;
     dispatch(setEditMode(toogleMode));
-    // console.log("click Edit List");
-    // window.alert("Sory... This function is not relase eat");
   };
 
   return (

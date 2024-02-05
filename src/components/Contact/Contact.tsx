@@ -1,8 +1,7 @@
 import React from "react";
 import style from "./Contact.module.scss";
 import { TContact } from "../store/reducers/phoneBook";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
-// import { setMode } from "../store/reducers/app";
+import { useAppSelector } from "../store/hooks";
 import { ReactComponent as IcoAvatar } from "../../assets/img/defaultUser.svg";
 
 type TProps = {
@@ -19,7 +18,9 @@ const Contact = ({
   const { id, name, email, number, address } = contact;
   const isEditMode = useAppSelector((state) => state.mode.editMode);
   let styleAll = [style.contact];
+
   if (active) styleAll.push(style.active);
+
   return (
     <div className={styleAll.join(" ")}>
       <div className={style.avatar}>

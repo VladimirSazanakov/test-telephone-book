@@ -1,5 +1,6 @@
 $hover_color: #273B69;
 $fill_color: #fefefe;
+
 .fog{
   position: fixed;
   width: 100vw;
@@ -16,7 +17,6 @@ $fill_color: #fefefe;
   margin-left: -218px;
   margin-top: -218px;
   border-radius: 50%;
-  // outline: red solid 1px;
 }
 
 .imageUp{
@@ -24,25 +24,18 @@ $fill_color: #fefefe;
   fill: #fefefe;
   :hover{
     fill: $hover_color;
-  // ~.ico_add{
-  //   fill:$fill_color;
-  // }  
   }
 }
 .imageUp:hover~.ico_add{
   fill:$fill_color;
 }
 
-// .ico_add:hover{
-//   fill: $fill_color;
-// }
 .ico_add{
   position: absolute;
   z-index: 16;
   top: 30px;
   left: 190px;
   fill: $hover_color;
-  // stroke: $hover_color;
 }
 
 .text_add{
@@ -63,7 +56,6 @@ $fill_color: #fefefe;
 .imageRight{
   position: relative;
   transform: rotate(90deg);
-  // transform-origin: 50% 75%;
   top: -47px;
   left: 127px;
   fill: #fefefe;

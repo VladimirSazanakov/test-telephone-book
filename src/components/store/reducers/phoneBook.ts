@@ -1,9 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-// type TCurrentState = {
-  
-// }
-
 export type TContact = {
   id: number,
   name: string,

@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import style from "./ContactList.module.scss";
 import Contact from "../Contact/Contact";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { setActiveContact } from "../store/reducers/phoneBook";
 import { setMode } from "../store/reducers/app";
+import { appMode } from "../../types_test/types";
 
-const ContactList = (props: any) => {
-  // const [activeElement, setActiveElement] = useState(0);
-
+const ContactList = () => {
   const activeElement = useAppSelector(
     (state) => state.phoneBook.activeContact
   );
@@ -16,8 +15,6 @@ const ContactList = (props: any) => {
   const sortValue = useAppSelector((state) => state.sort.value);
   const isEditMode = useAppSelector((state) => state.mode.editMode);
   const dispatch = useAppDispatch();
-
-  // console.log(contacts);
 
   const sortFunc = (elA: any, elB: any) => {
     if (elA[sortValue] < elB[sortValue]) {
@@ -30,15 +27,14 @@ const ContactList = (props: any) => {
   };
 
   const handleClick = (key: number) => {
-    // setActiveElement(key);
     dispatch(setActiveContact(key));
     if (!isEditMode) {
-      dispatch(setMode("view_contact"));
+      dispatch(setMode(appMode.view_contact));
     }
   };
 
   const onClickEdit = () => {
-    dispatch(setMode("edit"));
+    dispatch(setMode(appMode.edit));
   };
 
   const list = contacts

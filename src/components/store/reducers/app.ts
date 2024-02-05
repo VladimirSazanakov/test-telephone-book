@@ -1,7 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { appMode } from "../../../types_test/types";
 
-const initialState = {
-  mode: 'view',
+type TState = {
+  mode: appMode,
+  editMode: boolean,
+}
+
+const initialState: TState = {
+  mode: appMode.view,
   editMode: false,
 }
 
@@ -10,8 +16,6 @@ export const appState = createSlice({
   initialState,
   reducers: {
     setMode(state, action){
-      // console.log(action.payload);
-      // console.log(state);
       state.mode = action.payload;
     },
     setEditMode(state, action){

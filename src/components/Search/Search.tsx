@@ -1,21 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import style from "./Search.module.scss";
-import { UseDispatch, useDispatch } from "react-redux";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { setFilter } from "../store/reducers/filter";
 
 const Search = () => {
-  const [value, setValue] = useState("");
-
+  const value = useAppSelector((state) => state.filter.value);
   const dispatch = useAppDispatch();
 
   const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
+    dispatch(setFilter(event.target.value));
   };
-
-  useEffect(() => {
-    dispatch(setFilter(value));
-  }, [value]);
 
   return (
     <input

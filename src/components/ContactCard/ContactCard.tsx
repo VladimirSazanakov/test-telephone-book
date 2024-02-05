@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import style from "./ContactCard.module.scss";
+import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { setNewContact, updateContact } from "../store/reducers/phoneBook";
 import type { TContact } from "../store/reducers/phoneBook";
 import { setMode } from "../store/reducers/app";
-// import { ReactComponent as IcoUser } from "../../assets/img/defaultUser.svg";
+import { appMode } from "../../types_test/types";
+import style from "./ContactCard.module.scss";
 
 const ContactCard = () => {
   const mode = useAppSelector((state) => state.mode.mode);
@@ -21,7 +21,7 @@ const ContactCard = () => {
     address: "",
   };
 
-  if (mode === "edit" || mode === "view_contact") {
+  if (mode === appMode.edit || mode === appMode.view_contact) {
     const editedContact =
       List[List.findIndex((contact) => contact.id === active)];
     NewContact.name = editedContact.name;
@@ -29,7 +29,7 @@ const ContactCard = () => {
     NewContact.email = editedContact.email ? editedContact.email : "";
     NewContact.address = editedContact.address ? editedContact.address : "";
     formName = "Редактировать пользователя";
-    if (mode === "view_contact") {
+    if (mode === appMode.view_contact) {
       formName = "Просмотр пользователя";
     }
   }
@@ -43,7 +43,6 @@ const ContactCard = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    console.log(event);
 
     const newContact: TContact = {
       id: active ? active : 1,
@@ -52,16 +51,16 @@ const ContactCard = () => {
       email: email,
       address: address,
     };
-    if (mode === "new") {
+    if (mode === appMode.new) {
       dispatch(setNewContact(newContact));
-    } else if (mode === "edit") {
+    } else if (mode === appMode.edit) {
       dispatch(updateContact(newContact));
     }
-    dispatch(setMode("view"));
+    dispatch(setMode(appMode.view));
   };
 
   const handleExit = () => {
-    dispatch(setMode("view"));
+    dispatch(setMode(appMode.view));
   };
 
   return (
@@ -108,7 +107,7 @@ const ContactCard = () => {
             onChange={(event) => setAddress(event.target.value)}
           />
           <div className={style.button_wrapper}>
-            {mode === "view_contact" ? null : (
+            {mode === appMode.view_contact ? null : (
               <button className={style.button} type="submit">
                 Сохранить
               </button>
