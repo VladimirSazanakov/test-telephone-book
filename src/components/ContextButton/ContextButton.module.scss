@@ -36,6 +36,7 @@ $fill_color: #fefefe;
   top: 30px;
   left: 190px;
   fill: $hover_color;
+  pointer-events: none;
 }
 
 .text_add{
@@ -47,6 +48,7 @@ $fill_color: #fefefe;
   color:$hover_color;
   z-index: 16;
   font-weight: 600;
+  pointer-events: none;
 }
 
 .imageUp:hover~.text_add{
@@ -69,7 +71,8 @@ $fill_color: #fefefe;
   top: 140px;
   left: 325px;
   z-index: 16;
-  fill:$hover_color
+  fill:$hover_color;
+  pointer-events: none;
 }
 .imageRight:hover~.ico_export{
   fill:$fill_color;
@@ -84,6 +87,7 @@ $fill_color: #fefefe;
   color:$hover_color;
   z-index: 16;
   font-weight: 600;
+  pointer-events: none;
 }
 
 .imageRight:hover~.text_export{
@@ -105,7 +109,8 @@ $fill_color: #fefefe;
   top: 300px;
   left: 190px;
   z-index: 16;
-  fill:$hover_color
+  fill:$hover_color;
+  pointer-events: none;
 }
 .imageDown:hover~.ico_edit{
   fill:$fill_color;
@@ -120,6 +125,7 @@ $fill_color: #fefefe;
   color:$hover_color;
   z-index: 16;
   font-weight: 600;
+  pointer-events: none;
 }
 
 .imageDown:hover~.text_edit{
@@ -143,7 +149,8 @@ $fill_color: #fefefe;
   top: 140px;
   left: 55px;
   z-index: 16;
-  fill:$hover_color
+  fill:$hover_color;
+  pointer-events: none; 
 }
 .imageLeft:hover~.ico_import{
   fill:$fill_color;
@@ -158,6 +165,7 @@ $fill_color: #fefefe;
   color:$hover_color;
   z-index: 16;
   font-weight: 600;
+  pointer-events: none;
 }
 
 .imageLeft:hover~.text_import{
